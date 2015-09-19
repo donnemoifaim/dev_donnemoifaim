@@ -1,0 +1,868 @@
+@font-face 
+{
+    font-family: 'lobster';
+    src: url('polices/lobster_1.4-webfont.eot');
+    src: url('polices/lobster_1.4-webfont.eot?#iefix') format('embedded-opentype'),
+         url('polices/lobster_1.4-webfont.woff2') format('woff2'),
+         url('polices/lobster_1.4-webfont.woff') format('woff'),
+         url('polices/lobster_1.4-webfont.ttf') format('truetype'),
+         url('polices/lobster_1.4-webfont.svg#lobster_1.4regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/*/////////////////////////// GENERAL ////////////////////////////////////*/
+* {font-family: Helvetica ,arial, trebuchet, 'Courier New' , sans-serif}
+a 			{text-decoration: none ; font-weight:normal }
+a img		{border: none;}
+
+ul {margin:0 ; padding:0 ; list-style-type: none; }
+
+li {display:inline-block;}
+
+
+html, body, #wrap {width:100%; height: 100% ; margin:0}
+body > #wrap {height: auto; min-height: 100%;}
+
+#main{padding:20px 20px 230px 20px}
+
+h1,h2,h3,h4,h5,h6{margin:0}
+
+body::-webkit-scrollbar, #contenu_bloc_full_screen::-webkit-scrollbar , .bloc_apparait::-webkit-scrollbar , .apercu_full_screen::-webkit-scrollbar{width: 12px;background-color: #efefef;border-radius:10px}
+body::-webkit-scrollbar-track, #contenu_bloc_full_screen::-webkit-scrollbar-track, .bloc_apparait::-webkit-scrollbar-track, .apercu_full_screen::-webkit-scrollbar-track{background-color:white;border-radius:10px}
+body::-webkit-scrollbar-thumb, #contenu_bloc_full_screen::-webkit-scrollbar-thumb, .bloc_apparait::-webkit-scrollbar-thumb, .apercu_full_screen::-webkit-scrollbar-thumb{width: 12px;background-color: #efefef;border-radius:10px}
+
+table
+{
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 3px solid #db302d;
+	padding:5px;
+}
+th
+{
+	color:white;
+	background-color:#db302d ;
+}
+
+.apercu_full_screen{height:80%;overflow:auto;}
+
+#acces_direct						{display:inline-block; color:white; background-color:#333333; padding:5px; font-weight:bold; font-size:14px; border-radius: 5px;color:white }
+
+.bloc_apparait						{background-color:white; /* IE */ width:95% ; height:100%; margin:0; z-index:100; position:fixed; left:-100%; top:50px; display:none; overflow:auto; text-align:center; background-color: rgba(255,255,255,0.97); box-shadow:2px 0 5px #888; padding-left:10px; padding-right:10px}
+
+#bloc_full_screen , #bloc_full_click {background-color:rgba(237,239,236, 0.8); z-index:200; position:fixed; width:100%; height:100%; margin:0 ; padding:0}
+#bloc_full_click {opacity:0; z-index:99}
+
+#contenu_bloc_full_screen{position:fixed; top:0 ; bottom:0 ; left:0 ; right:0 ; margin:auto ; z-index:201;  background-color:#db302d; max-height:100% ; min-height: 200px; height: 200px; overflow:auto;color:white; padding:20px;text-align:center}
+
+#contenu_bloc_full_screen p {font-weight:bold; font-size:18px ; }
+
+#contenu_bloc_full_screen button, .buttonEnfonce, .buttonEnfonceRouge , .donnemoifaim_button_index{font-size:16px; font-weight:bold; border-radius:10px ; background-color:#edefec; box-shadow:1px 2px 5px #333; padding:10px; cursor:pointer; width:150px; color:#db302d ; margin-top:10px; position:relative; z-index:99; max-width:100%; border:0; outline: none; }
+
+#contenu_bloc_full_screen button:active , .buttonEnfonce:active , .buttonEnfonceRouge:active , .donnemoifaim_button_index:active{box-shadow:-1px -2px 5px #333}
+
+.buttonEnfonceRouge , .donnemoifaim_button_index{background-color:#db302D; color:white}
+.donnemoifaim_button_index{position:absolute ; margin:auto ; left:0 ; right:0 ; bottom:-30px; text-align:center; width:200px; z-index:1}
+
+.afficher_plus{background-color:#efefef ; box-shadow: 0 -1px 5px #888; text-align:center; padding:5px; font-weight:bold;  position:absolute ; bottom:0 ; display:block; width:100%; color:#333 ; left:0; cursor:pointer}
+
+.title_picto {
+  padding: 5px;
+  color: white;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color:#db302d;
+  border:2px solid #efefef;
+  position:absolute;
+}
+
+#bloc_chargement_action {display:inline-block; margin:0 ; padding-top:1px; padding-bottom:2px; width:0 ; background-color:#FF3734; position:fixed; z-index:101; left:0; top:50px; box-shadow:1px 0 1px #982121}
+
+#noscript, #navigateur_ancien_non_compatible, .zone_paiement_securise {display:inline-block ; margin:0 ; width:100% ; background-color:#db302d; padding:2px ;color:white; text-align:center; position:relative; z-index:101; font-weight:bold;}
+#navigateur_ancien_non_compatible{background-color:#cfcfcf; z-index:99}
+.zone_paiement_securise{background-color:#158B1B; width:auto; padding:8px ; border-radius:5px}
+.preview_liste_plats_compte	{display:inline-block;margin-right:10px;margin-left:10px;width:250px;margin-top:20px;background-color:white; border-radius: 8px; box-shadow: 0px 1px 3px black; -webkit-box-shadow:  0px 1px 3px black; -moz-box-shadow:  0px 1px 3px black; word-wrap:break-word; vertical-align:top}
+.preview_liste_plats_compte .lien_image {box-shadow:0 1px 5px #888;display:block; margin:0;height:150px; background-position:center; background-size:100%; transition: background-size 0.3s ease-in;
+-moz-transition: background-size 0.3s ease-in;
+-ms-transition: background-size 0.3s ease-in;
+-o-transition: background-size 0.3s ease-in;
+-webkit-transition: background-size 0.3s ease-in;
+}
+.preview_liste_plats_compte .lien_image:hover{background-size:150%}
+.bold , strong{color:#db302d; font-weight:bold}
+.texte_site {color:#db302d ; font-weight:bold}
+.texte_site_noir{color:#333; font-size:14px; }
+.texte-italic{font-style:italic; font-size:12px ; }
+.bouton_fermer			{position:absolute;top:10px; right:10px;font-weight:500;color:#db302d; cursor:pointer; display:inline-block}
+.bouton_fermer:before	{content: 'x'; }
+.center			{text-align:center;}
+.erreur			{color:white; font-weight:bold }
+.valide			{color:green; font-weight:bold }
+.retour			{background-color:#333; padding:10px; font-weight:bold; font-size:16px; box-shadow: 2px 2px 2px #ccc; color:white}
+.reset_button	{background:none; border:0; outline: none; }
+.reset_input		{margin:0;border:0;padding:0;display:inline-block;vertical-align:middle;white-space:normal;background:none;line-height:1;font-size:13px;font-family: Helvetica ,arial, trebuchet, 'Courier New' , sans-serif}
+.reset_input:hover	{outline:0;}
+.reset_input:focus {outline:0;}
+.titre	{font-family:'lobster'; font-size:22px; color:#db302d ; }
+.reset_fieldset{border: 0px;}
+.verif_champ{position:absolute}
+
+.fieldset_input_display{margin-top:10px}
+
+.input, .input_submit{width:90%; text-align:center; border-radius: 10px; padding:5px 5% 5px 5%; font-weight:bold; color:#333; box-shadow:1px 2px 5px #888; outline:0;border:2px solid white; margin-bottom:10px; background-color:white; max-width:250px;}
+.input:focus, .input_file_original:focus, .input_submit:focus	{outline:none; box-shadow:1px 2px 5px #888 inset;}
+.input_checkbox, .input_checkbox_attribus , .checkbox_type_resto_multiple	{width:30px; height:30px}
+.input_file			{  box-shadow:0 1px 5px #888;cursor:pointer;background-color:#db302d; color:white;z-index:19;position:relative;height: 50px;width:100%; max-width:200px; border-radius: 3px; font-weight:bold; font-size:14px; border:none;}
+.input_file:focus	{outline:none}
+
+.input_file_original:active ~ .input_file {box-shadow:-1px -2px 5px #333}
+.input_submit		{cursor:pointer;height: 35px; color:#db302d; background-color:white;border:0px solid white;  font-weight:bold; box-shadow:1px 2px 5px #333; display:inline-block; max-width:150px ; padding:5px} 
+.input_submit:active{box-shadow:-1px -2px 5px #333}
+
+.textarea_non_resize {resize: none; overflow:hidden}
+
+.mdp_oublie {outline:none;position:absolute ; right:0px; top:0; padding: 5px; background-color: #f7f7f7;  border-radius: 5px; box-shadow: 0px 1px 3px #6c6c6c;z-index:2;}
+.ombre_photo	{box-shadow:2px 2px 2px #aaa}
+
+.ui-autocomplete {max-height: 300px;overflow-y: auto;overflow-x: hidden;}
+html .ui-autocomplete {height: 300px;}
+
+.bloc_creercompte{border-top: 2px dotted white ; text-align:center; padding-top:10px}
+.creercompte{font-size:16px;outline:none;font-weight:bold; text-align:center; color: white; border-radius: 5px; padding: 10px ;  margin:auto; cursor:pointer; color:white ; border:2px solid white; }
+.creercompte:hover{background-color:white; color:#db302d}
+
+.bandeau_promo{background-color:#db302d; color:white ; padding:5px ; transform:25deg ;  -ms-transform: rotate(-10deg); /* IE 9 */;  -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */; transform: rotate(-40deg); height:75px ; width:357px ; position:absolute ; left:-87px; top:24px; text-align:center; z-index:99; font-family: lobster;border: 3px solid #BD1F1C }
+
+.banniere_application{background-color:#db302d ; position:fixed; bottom:0 ; width:100% ; z-index:102 ;  height:150px ; box-shadow:0 -1px 5px #888; color:white; text-align:center}
+
+.div_annonce_application{display:inline-block; vertical-align:top; width:40%; margin:5px}
+
+/*/////////////////////////// HEADER ////////////////////////////////////*/
+header						{top:0;position:fixed;z-index:101; width:100%; background-color: #edefec ; text-align:center; box-shadow:0 1px 5px #888; }
+
+header li			{display:inline-block ;vertical-align:top; padding: 4px; cursor:pointer;  margin-top:9px; margin-right:2%} 
+
+header li a, header li span {vertical-align:top; font-family:'lobster'; font-size:18px; color:#db302d; font-weight:bold;}
+
+header form					{display:inline-block; vertical-align:top }
+
+header #formulaire_recherche_ville, #formulaire_recherche_ville_responsive 	{margin-top:10px ; padding:0}
+header form #recherche , #recherche_responsive									{margin:0 ; width:150px;display:inline-block ;vertical-align:top; font-family:'lobster'; font-size:18px; color:#db302d;border:none;text-align:center; border-radius:8px;  font-weight:bold; height:26px}
+#submit_recherche, #submit_recherche_responsive, #supp_recherche_valide	{margin-left:-5px;background-color:#db302d; padding:6.5px; display:inline-block;} 
+
+#supp_recherche_valide, .recherche_valide{cursor:pointer; }
+
+#supp_recherche_valide{height:15px}
+
+#logo 	{position:fixed; top:20px; left:2%; z-index:102}
+/*///// FOOTER /////*/
+footer	{text-align:center;position: relative;clear:both;margin-top: -220px;height: 210px; background-color:#edefec; color:#333 ; font-size:14px; box-shadow:0 -1px 5px #888;padding-left:10px; padding:0 10px 25px 10px ; z-index:15}
+footer li {cursor:pointer;font-size:14px;color:#db302d ; font-family:'lobster'; margin:5px; cursor:pointer; font-weight:bold }
+
+#button_footer_option{display:none}
+
+#donnees_organisation span, #donnees_organisation a{color:#333;font-size:12px; font-family:'lobster'}
+
+#block_conditions_generales {background-color:white; width:50%; padding:20px; margin:auto; border-radius:10px}
+
+#copyright{font-family:'lobster'}
+
+/*/////////////////////////// AUTRE ACTION ////////////////////////////////////*/
+#autre_action .retour_menu 				{background-color:white; color:black; text-align:center; width:150px;float:right; border-radius:5px; cursor:pointer; padding:5px}
+#autre_action .retour_menu:hover			{color:white; background-color:#224f71}
+#block_conditions_generale		{height:70%}
+ 
+#autre_action #menufooter					{width:80%; text-align:center; margin:auto} 
+
+.bloc_partenaire {display:inline-block ; vertical-align:top ; margin:10px;}
+
+/*//////////////////////////INDEX////////////////////////////////*/
+.center_image						{text-align:center;}
+.div_contenu_index_visible			{background-color:white; /* IE */ background-color:rgba(255, 255, 255, 0.8) ; padding:23px; display:inline-block; border-radius: 10px; position:relative}
+.fonctionnalite						{padding: 120px 4.5% 15px 4.5% ; color:#5F5F5F;height:1000px; position:relative ; background-size:cover; background-position:center;}
+.block_image_plus					{width:320px; margin-top:50px; display:inline-block}
+.block_image_plus2					{height:310px;width:320px; display:inline-block}
+#conteneur_puce						{color:#333 ; position:fixed;top:60px; text-align:center; width:100%; z-index:2}
+.puce_menu							{background-color:white; cursor:pointer; font-family:'lobster'; z-index:2}
+.puce_menu:hover					{background-color:#db302d; color:white}
+#menu_gourmant_submit				{height:30px;margin: auto; width:220px; padding:10px; background-color: #db302d; color:white; font-weight:bold; font-size: 22px}
+#menu_gourmant_submit_block			{margin:0 ;padding:0 ; position:fixed; bottom:0px; width:100%; text-align:center}
+#page_prec							{z-index:3;display:none;position:absolute;left:0px; top:45%; cursor:pointer;width:50px}
+#page_suiv							{z-index:3;position:absolute; right:0px; top:45%; cursor:pointer; width:50px}
+#q_fonctionnalite					{margin:0;text-align:center; color:#4ea6c2 ;  font-style: italic; font-size:18px}
+
+
+
+/*//////////////////////////AJOUT DE PLAT ////////////////////////////////*/
+.bloc_upload	{background-color:white;position:fixed; top:50px; left:0; height:100%; max-height:100% ;z-index:12;box-shadow:2px 1px 3px #333; padding-top:40px; width:180px; background-color:#efefef; box-shadow:1px 0 5px #888; }
+
+#titre_ajout_plat{padding-left:90px}
+
+#recap_plat{padding:5px}
+#supmdp				{position: absolute; left: 85%; top: 28%;z-index:15;}
+#bloc_mdp_oublier2	{width: 300px ; position: absolute; left: 10%; top: 40%;z-index:15;background-color: black ; opacity: 0.8; padding: 10px; color:white; text-align:center }
+
+.bloc_pourcentage_fichier, .progresse_upload{font-family:'lobster' ; font-weight:bold; font-size:22px; text-align:center}
+.progresse_upload, .pourcentage_signe{width:50px; color:#db302d; font-size:28px;}
+.progresse_upload{width:50px;}
+
+.bloc_gestion_image_upload	{display:inline-block; position:relative; margin:10px}
+
+.delete_image	{color:#db302d; font-weight:bold; padding:10px; vertical-align:middle; background-color:white ; position:absolute; right:20px; top:20px; box-shadow:0px 1px 3px black; cursor:pointer ; z-index:10 }
+.input_nom_plat	{width:90%; border-radius:3px }
+.preview_image, .preview_image_miniature{position:relative;display:inline-block;width:200px;background-color:white; border-radius: 200px; height:200px; overflow:hidden; z-index:8;}
+
+.preview_image:hover, .preview_image_miniature:hover{box-shadow: 0px 0px 5px #333;}
+
+.preview_plat_jaime{width:80px; height:80px}
+
+.preview_image_miniature{width:40px; height:40px; border-radius:40px; margin:2px; cursor:pointer }
+
+#block_apercu_image		{box-shadow: 0px 1px 3px #6c6c6c; background-color: #f2f2f2; width:90%; padding: 10px; border-radius: 5px; margin-left: 4%;}
+.apercu_image{box-shadow: 0 0 10px #333;max-height:500px; height:90%;}
+
+.apercu_image_miniature{height:100%;cursor:pointer; z-index:9; cursor:pointer}
+.bloc_input_apercu_image{position:relative; top:-20px; z-index:10; display:inline-block}
+#couleur_fond_text 		{background-color:white; box-shadow: 0px 1px 3px #6c6c6c;border-radius:10px;padding-left:20px;}
+#format_autorise 		{margin-left:5%}
+#formconnection			{position:relative;padding: 40px 5% 0 5%; background-color: #db302d; max-width:350px; box-shadow: 0px 1px 3px #6c6c6c;color:white ; border-radius:10px}
+#bloc_ajout_de_plat, #bloc_choix_abonnement	, #bloc_apercu_modif_plat, #bloc_ajout_facade_complementaire	{padding-left:200px; padding-right:100px }
+#bloc_ajout_attribus_complementaire{padding-right:80px}
+.formulaire_upload_image	{text-align:center;}
+#input_submit_ajout_plat{}
+#taille_plat_lourd		{font-size:24px;font-weight:bold;color: black; margin-left:auto; margin-right: auto;width:60%; text-align:center;border-radius: 5px ; padding: 10px; background-color: #e41835; box-shadow: 0px 1px 3px black;}
+#taille_plat_parfaite	{font-size:24px;font-weight:bold;margin-left:auto; margin-right: auto;  width:60%; text-align:center;border-radius: 5px ; padding: 10px; background-color: #329539; box-shadow: 0px 1px 3px black; }
+
+.bloc_button_suivant_processus, .bloc_button_precedent_processus {position:fixed ; top:0; bottom:0 ; margin:auto; height:110px; z-index:20 ; text-align:center;right:20px;}
+
+/*/ On rajoute input quand meme malgré le first letter car ça semble pas fonctionner avec les input*/
+.bloc_button_suivant_processus:first-child, .bloc_button_suivant_processus input, .bloc_button_precedent_processus:first-child {border:0; outline:none}
+.bloc_button_suivant_processus :first-child:active, .bloc_button_precedent_processus :first-child:active {zoom:0.95 ;}
+.bloc_button_suivant_processus :first-child:hover {position:relative; left:2px}
+.bloc_button_precedent_processus :first-child:hover{position:relative; right:2px}
+/*/////////////////////////MENU GOURMANT///////////////////////////////*/
+
+#bloc_demande_tuto_nouveau{background-color:#db302d ; color: white ; padding:10px ; padding-top:30px; padding-bottom:20px ;  margin-top:0 ; margin-bottom:0 ;  text-align:center ; border-radius:10px ; border:3px solid #BB2F2D; margin:auto ; width:250px; position:relative; top:-200px; z-index:100; max-width:100%}
+.petite_croix_fermer_bloc{background-color:white ; display:inline-block ; border-radius:50px ; text-align:center; width:10px;  position:absolute ; right:10px; top:10px; color:#db302d; padding:4px 8px 4px 8px; cursor:pointer}
+
+#tuto_premiere_visite {display:block ; margin:0 ; width:100% ;background-color:#db302d /* ie8 */; background-color:rgba(219, 48, 45, 0.89); padding:2px ;color:white; text-align:center; position:fixed; z-index:98; font-weight:bold; margin:auto; top:0 ; bottom:0 ; left:0 ; right:0 ; }
+#contenu_tuto_premiere_visite {position:fixed; top:0 ; left: 0 ; right:0 ; bottom:0 ; width:95% ; margin:auto; height:200px }
+#texte_tuto_premiere_visite{font-weight:bold; font-size:22px ; text-align:center}
+.button_tuto{border-radius:50px ; height:10px; width:10px; background-color:white}
+
+#bandeau_reduction{position:absolute ; top:50px; right:0; z-index: 10 }
+
+#div_id_plat_invisible{display:none; margin:0; padding:0}
+
+#button_donnemoifaim{cursor:pointer;z-index:96;position:absolute; right:7%; bottom:20%; cursor:pointer; width:80px; }
+#button_fleche_bas	{position:absolute ;right:0;left:0;margin-left:auto; margin-right:auto; bottom:0;z-index:99; cursor:pointer; width:30%; min-width:80px; max-width:150px; max-height:75px}
+#button_fleche_haut	
+{
+	display:inline;
+	cursor:pointer;
+	width:20%; 
+	min-width:100px;
+	max-width:120px; 
+	max-height:75px;
+	position:fixed; 
+	z-index:99;
+	left:0;
+	right:0;
+	margin:auto;
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand'); /* IE8 */
+ }
+.button_fleche_cote
+{
+	display:inline;
+	cursor:pointer;
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+	transform: rotate(90deg);
+	width:20%; 
+	min-width:100px;
+	max-width:120px; 
+	position:fixed; 
+	z-index:99;
+	left:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+}
+
+#bloc_passer_resto{padding:5px ;background-color:#db302d; background-color: rgba(219,48,45,0.8); text-align:center;position:absolute; bottom:50px; right:0px; z-index:99 ; margin:0 ; color:white ; font-weight:bold; cursor:pointer}
+
+#fond_info_complementaire{background-color:rgba(219,48,45,0.8) ; position:absolute; z-index:97;width:100%; height:100%; top:0; }
+#nomplat_complementaire{margin-top:0}
+#image_plat{width:100%; max-width:800px ; bottom: 0; left: 0;margin: auto;overflow: hidden;position: fixed;right: 0; top: 0; box-shadow: 0 0 10px #333; -moz-transform-origin: center 30% 0 ; cursor:pointer }
+
+
+#footer_menu_gourmand{margin:0;background-color:#edefec; height:50px; position:fixed; bottom:0; box-shadow:0 -1px 5px #888; z-index:98; width:100%;}
+
+#bloc_info_plat		{margin:0;padding:20px; background-color: #db302d /*IE8*/ ; background-color:rgba(219,48,45,0.8) ;  border-radius:20px;position:absolute; left:5%; bottom: 70px; color:white; width:30%; max-width:300px; min-width:130px; z-index:98; min-height:10%; max-height:250px; box-shadow:1px 2px 3px #982121}
+
+#block_image	{background-color: #000 ; overflow:hidden;width:100%; position:absolute; top: 0px; height:100%; left:0px;}
+
+.info_plats	{font-weight:normal; margin:0;text-transform: capitalize;}
+#infos_complementaires{float:right}
+
+.titre_info_complementaire{margin:0 ; font-family:'lobster'; font-weight:normal; text-transform: capitalize;color:#db302d; text-decoration: underline; font-size:22px;}
+
+
+#note_du_chef {color:#db302d ; text-align:right; margin:0; font-family:'lobster';}
+
+.photo_facade_miniature
+{
+	border: 2px solid #db302d;
+	max-height:200px;
+	width:40%;
+	max-width:360px; 
+	margin:auto;
+ }
+	
+#nomresto_complementaire,#adressresto_complementaire{color:#db302d; margin:0; font-family:'lobster'; text-align:right}
+
+#nomresto_complementaire a {color:#db302d ;font-family:'lobster'; }
+#nomresto , #nomresto a	{color:#ffffff ;font-family:'lobster'; font-weight:normal }
+
+.image_application_plat	{margin-right:5%; width:50px}
+
+
+#bloc_image_plat{overflow:hidden;text-align:center; width:100%; z-index:1 ; position:relative ; }
+
+#picto_en_attente_geo
+{
+	-moz-transition: transform 1s; /* mozilla */
+	-webkit-transition: transform 1s; /* Chrome, Safari, Opera */
+	transition: transform 1s;
+}
+
+#picto_en_attente_geo:hover
+{
+	-ms-transform: rotate(180deg); /* IE 9 */
+	-webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+	transform: rotate(180deg); 
+}
+
+#bloc_chargement_image
+{
+	display:none;
+	position:fixed; 
+	top:0; 
+	left:0;
+	right:0;
+	bottom:0 ; 
+	margin:auto;
+	width:300px;
+	height:23px;
+	z-index:96;
+}
+
+
+#ul_mes_jaimes{text-align:left; margin:0 ; padding:0; text-align:center}
+
+#bloc_contenu_mes_points , .bloc_affichage_numeriques{padding:10px; text-align:center ; box-shadow: 2px 2px 4px #888; border-radius:10px ; color:#db320d; background-color:white ; font-size:22px ; display:inline-block ; }
+
+.facebook_share_point{padding:10px ; text-align:center ; background-color:#3b5998 ; font-weight:bold; color:white; display:inline-block ;cursor:pointer}
+
+#bloc_connection_compte_visiteur span {font-size: 14px ; font-family:'lobster'; color:#333; }
+
+.recherche_valide{background-color:#db302d; display:inline-block; font-size: 14px ; font-family:'lobster'; color:#edefec; margin:0; padding:0; vertical-align:top ; padding:5px}
+/*/////////////////////////APPLICATION/////////////////////////////////*/
+.picto_partage{margin-right:5px}
+
+#bloc_partage_plat_categorie, #bloc_jaime_plat_categorie {display:inline-block; margin:0 ; padding:0; margin-right:1px /*ie8 fix bug*/}
+
+.picto_partage_reseaux
+{
+	-webkit-transition: transform 1s ; 
+	-moz-transition: transform 1s ; 
+	transition: transform 1s ; 
+}
+.picto_partage_reseaux:hover
+{
+	-webkit-transform: rotate(360deg) ; 
+	-moz-transform: rotate(360deg) ; 
+	-ms-transform: rotate(360deg) ; 
+	transform: rotate(360deg) ; 
+}
+
+#texte_partage_button,#button_jaime_plat, #button_aleatoire, #button_cible	
+{
+	font-family:'lobster' ; 
+	color:#918d84 ; 
+	font-size:18px;
+	vertical-align:top;
+}
+.picto_partage, .picto, .picto_jaime, #picto_aleatoire, #picto_cible, .picto-jaime-plus, .picto_voir, .picto_retour, .picto_annuler, .picto_precedent, #bandeau_reduction, .picto_avis, .picto_supp
+{
+	cursor:pointer;
+}
+.picto_header
+{
+	-webkit-transition:rotate 1s ; 
+	transition: transform 1s ;
+	vertical-align:top; 
+}
+.picto_header:hover
+{
+	-ms-transform: rotate(360deg); /* IE 9 */
+	-webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+	transform: rotate(360deg);
+}
+.picto_retour
+{
+	position:absolute ; top:0; right:10px;
+}
+.picto_google_map
+{
+	cursor:pointer
+}
+.picto_google_map:hover
+{
+	background-color:#db302d;
+}
+.picto_partage:hover, .picto_jaime:hover
+{
+	background-color:#db302d ;
+}
+.picto_jaime_deja_vote
+{
+	background-color:#db302d ;
+}
+#nombre_jaime_plat
+{
+	font-size:12px;
+	vertical-align:top;
+	color:#db302d;
+	font-family:'lobster' ;
+	overflow:hidden;
+}
+
+#bloc_geo_aleatoire
+{
+	display:inline-block;
+	vertical-align:top;
+	float:right;
+	margin-right:5%;
+	margin-top:3px; 
+}
+#bloc_jaime_partage 
+{
+	display:inline-block;
+	vertical-align:top;
+	float:left;
+	margin-left:5%;
+	margin-top:3px; 
+}
+
+.bloc_view_jaime_plat{display:inline-block;box-shadow: 0px 1px 5px #888; margin-bottom:10px ; padding:10px; position:relative; max-width:400px ; width:90%; margin-left:10px; margin-right:10px ; background-color:white; vertical-align:top ; }
+.contenu_infos_text_jaime{font-size:20px ; background-color:white ; border-radius:5px; padding:5px; box-shadow:2px 1px 5px #888; display:inline-block}
+
+#bloc_info_coulissant{z-index:100;width:70% ; min-width:350px; position:absolute ; height:100%; left:0; right:0; margin:auto; bottom:-100%; background-color:#edefec; overflow:auto}
+
+#bloc_note_du_chef{max-width:300px ; min-width:200px; margin:auto; width:60%; text-align:left; margin-top:0}
+
+.bloc_infos_complementaire{box-shadow:0 4px 5px #ccc; margin-bottom:10px; padding:20px; text-align:center}
+#bloc_tout_plats{box-shadow:0 0 0 #efefef;}
+
+.apercu_autre_plat
+{
+	border: 2px solid #db302d; 
+	box-shadow: 2px 2px 5px #333; 
+	padding:0; 
+	margin:0 10px 10px 0;
+	width:50px;
+	height:50px;
+	display:inline-block
+}
+.apercu_autre_plat:hover
+{
+	box-shadow: 0 2px 10px #333; 
+}
+
+#bloc_form_avis_utilisateur	{padding:20px}
+#form_avis_utilisateur		{width:80% ; max-width:500px;}
+.avis_utilisateur			{padding:10px; word-wrap: break-word; box-shadow:0 1px 5px #888; background-color:#efefef; position:relative; height:150px ; overflow:hidden ; font-family:'lobster' }
+
+.notification_compte{border-radius:30px; background-color:white ; position:relative; left:-10px; padding-left:10px; padding-right:10px; box-shadow:0 1px 5px #888; color:#db302d}
+
+#notification_compte_visiteur
+{
+	position:absolute; 
+	top:80px;
+	z-index:97;
+	text-align:center;
+	font-size:12px;
+}
+
+.rappel_notification_compte 
+{
+position: relative;
+max-width: 205px;
+min-width:100px; 
+width:50%;
+padding: 10px;
+background: #FFFFFF;
+-webkit-border-radius: 16px;
+-moz-border-radius: 16px;
+border-radius: 16px;
+border: #db320D solid 5px;
+}
+
+.rappel_notification_compte:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 13px 17px;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+top: -17px;
+left: 18px;
+}
+
+.rappel_notification_compte:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 17px 21px;
+border-color: #db320D transparent;
+display: block;
+width: 0;
+z-index: 0;
+top: -26px;
+left: 14px;
+}
+
+.bloc_news, .bloc_events{width:300px ; max-width:80% ; border-radius:10px; background-color:white; overflow:hidden; box-shadow:2px 1px 5px #888; display:inline-block; vertical-align:top; position:relative; margin:10px;  word-wrap: break-word;}
+
+.conteneur_image_news, .conteneur_image_events,  .conteneur_image_offre {height:180px; margin:0; padding:0; overflow:hidden}
+
+.date_avis,  #bloc_supprimer_avis, .date_news{position:absolute; right:0; font-size:10px;padding: 3px;background-color:white;}
+.date_avis, .date_news{background-color:white;top:0px;}
+.ville_news{position:absolute; left:5px; top:5px;font-weight:bold; background-color:#db302d ; padding:3px; color:white; border-radius:5px;}
+#bloc_supprimer_avis{top:20px; background:none}
+
+.etoile_avis		{width:40px; height:40px ; color:#db302d ; font-size:35px; font-weight:bold ;display:inline-block}
+.etoile_cliquable	{cursor:pointer}
+
+#form_avis{width:100%}
+
+#iframe_partage_reseaux_sociaux{border:none; height:300px; width:400px; display:inline-block; margin:0}
+
+#url_select{display:inline-block; width:300px; vertical-align:top;}
+
+#google_map_plat				{width:100%;height:100% ; margin:0; padding:0; }
+
+.abonnement_visiteur_details{text-align:center; border-top:2px dashed #db320d; padding-top:10px}
+
+
+/*////////////////////////PAIEMENT///////////////////////////////*/
+.prix_resume_abonnement_plat_unitaire{font-size:22px}
+.chaque_mois_complement_abonnement{font-size:14px}
+.nombre_plat_span{font-size:12px; font-style:italic}
+.option_detail	{font-size:12px}
+
+.bloc_offre, .fiche_resto , .bloc_offre_point, .bloc_attribus, .bloc_affichage_contact_pro	{vertical-align:top;display:inline-block;margin-left:20px;width:250px;margin-top:20px;background-color:#efefef; border-radius: 8px; box-shadow: 0 1px 5px #888; position:relative;}
+
+.bloc_attribus, .bloc_affichage_contact_pro{width:200px; padding:10px; min-height:145px ;}
+.bloc_affichage_contact_pro{max-width:80%; margin-left:10px; margin-right:10px}
+
+.contenu_bloc_offre{padding:5px}
+
+#bloc_global_donnees_resto {text-align:center}
+
+#bloc_conteneur_infos_et_contact_pro {display:inline-block; vertical-align:top; margin-bottom:20px;max-width:100%; width:560px}
+.fiche_resto{width:90% ; max-width:500px; word-wrap: break-word; display:inline-block ; margin-left:20px; margin-right:20px; text-align:left ; padding-bottom:10px;}
+.bloc_image_fiche_resto{height:200px; margin:0; cursor:pointer ; box-shadow:0px -2px 5px #888 inset}
+.bloc_infos_comptes{border-bottom: 2px solid #ddd ; margin-bottom:5px; padding:5px;display:block}
+
+.bloc_picto_attribus{ text-align:center; display:inline-block; vertical-align:top}
+
+.picto_attribut{width:40px ; height:40px; padding:10px; border-radius:40px; background-color:#db302d; display:inline-block; text-align:center;margin:5px; overflow:hidden; cursor:pointer}
+
+.description_offre	{margin-left:5px; margin-right:5px;color:#333; font-weight:bold}
+.formulaire_offre	{margin-top:10px}
+#input_submit_version		{display:inline-block;cursor:pointer;font-weight:bold;height: 30px;width:100px; border-radius: 3px; border: 1px solid #B1B3B3; background-color:white;color:#333; font-size:14px} 
+#input_submit_version:hover	{background-color:#224f71; color:white;}
+
+/*///////////////////ANNUAIRE////////////////*/
+#recherche_approfondie_annuaire{padding:20px; min-width:200px; max-width:450px ; width:80% ;  background-color:#db302d; border-radius:20px ; border:3px solid #B92E2B; margin:auto}
+.bloc_conteneur_plusieurs_checkbox_type_resto, .bloc_conteneur_option_complementaire{margin:0 ; text-align:center; padding:5px; border-radius:10px ; color:#db302D ; background-color:white; font-weight:bold; display:inline-block; width:100px; margin:10px ; height:80px; vertical-align:top}
+
+.bloc_conteneur_option_complementaire{width:100% ; display:block; margin:auto; margin-bottom:10px ; }
+
+/*/////////////////COMPTE RESTO////////////////*/
+.bloc_contenu_centre,.bloc_contenu_centre2 	{vertical-align:top; text-align:left;}
+
+#menu_compte_admin{text-align:center; position:relative; margin:0}
+
+.menu_compte_resto{text-align:center; position:relative; margin:0}
+
+.menu_compte_resto_scroll{position:fixed ; top:50px ; left:-120px ; padding-top:35px ; line-height:20px ; overflow:auto; background-color:#efefef; box-shadow:0 1px 5px #888 ;  text-align:center; width:160px; margin:0 ; height:100% ; }
+.menu_compte_resto_scroll a {display:block}
+
+.label_compte_visiteur, .label_compte_resto, .label, .label_blanc {vertical-align:top;width:210px; font-weight:bold; display:inline-block; color:#db302d; text-shadow:1px 1px 3px #efefef}
+.label_blanc{color:white ; text-shadow:none}
+.input_compte_visiteur, .input_compte_resto	{width:300px; font-size:18px;color:#db302d; font-weight:bold; height:30px; border-radius: 8px;margin-bottom:10px;border:2px solid #333; border:none;}	
+
+.choix_autre_choix,.choix_autre_choix_blanc, .offre_special_compte {cursor:pointer;margin:5px;display:inline-block;outline:none;font-size:14px; text-align:center; background-color: #db302d; color: white; border-radius: 5px; padding: 5px ; border:2px solid #db302d; font-weight:bold}
+.choix_autre_choix:hover, .offre_special_compte {background-color:white; color:#db302d;}
+
+.choix_autre_choix_blanc{color:#db302d ; background-color:white}
+.choix_autre_choix_blanc:hover{background-color:#820F0F; color:white;}
+
+.choix_menu_compte_resto , .choix_menu_compte_visiteur{display:inline-block; ;font-size:12px; cursor:pointer; margin:10px; font-weight:bold; color:#333; }
+
+.bloc_contenu_jour_semaine{display:inline-block ; margin:5px; vertical-align:top}
+
+.bulle_jour_semaine_off, .bulle_jour_semaine_on, .bulle_jour_semaine_on_affichage{color:white ; text-align:center ; padding:5px; border-radius:50px ; display:inline-block ; cursor:pointer; width:50px ; background-color:#D0D0D0; line-height:50px; height:50px }
+.bulle_jour_semaine_off:hover , .bulle_jour_semaine_on, .bulle_jour_semaine_on_affichage{background-color:#db302d}
+
+.dispo_contact{display:inline-block ; margin:5px; vertical-align:top ; background-color:#efefef ; padding:5px; border-radius:10px }
+
+.select_disponibilite_semaine{width:105px}
+
+.bloc_reduction_global{display:inline-block; margin:15px ; background-color:white ; padding:10px; vertical-align:top}
+.bloc_reduction			{background: url('/imgs/bloc_reduction.png') no-repeat center; height:135px;width:300px; margin:auto; color:white; margin-top:20px}
+.texte_bloc_reduction	{width:180px; margin-left:30px; margin-right:20px;  padding-top:14px ; display:inline-block; vertical-align:top}
+
+.bloc_demande_choix{background-color:#db302d ; color:white ; border:2px solid #C31414; position:absolute; z-index:102; margin:auto ; left:0 ; right:0 ; top:0 ; bottom:0 ; height:250px; max-height:90% ; display:inline-block; width:90% ; max-width:500px ; padding:10px 5% 10px 5%; text-align:center; z-index:110}
+
+#iframe_pub_reduction{border:0 ; margin:0;}
+
+#formulaire_ajout_reduction{padding:10px; margin-left:-10px; margin-right: -10px; background-color:#efefef ;margin-top:10px}
+
+#impression_bon_commande, #bloc_montrer_bon_reduction {display:inline-block ; margin:0 ;}
+
+#bloc_montrer_bon_reduction{margin-right:20px}
+
+.nombre_jour_restant_plat{padding-top:5px;padding-bottom:5px; color:#333; background-color:#efefef; display:inline-block ; width:100%}
+
+#bloc_facture{padding:10px; display:inline-block; border-radius:10px; margin:10px; width:90% ; max-width:500px}
+.bloc_lien_facture{border-radius:10px; padding:5px ; margin-bottom:10px;}
+.text_lien_facture{font-weight:bold ; background-color:white ; margin-left:-5px ; margin-right:-5px ; padding-top:5px ; padding-bottom:5px ; color:#db302d }
+
+/*/// ADMINISTRATION */
+
+.alertTache {background-color:#db320d ; padding:5px 10px 5px 10px ; display:inline-block; border-radius:30px; color:white}
+.buttonAdmin {background-color:green; border:2px solid green}
+.buttonAdmin:hover {color:green}
+.list_tache, .list_erreur{display:inline-block; padding:10px; border-radius:10px; border:3px solid green; position:relative; width:20% ; min-width:300px; vertical-align:top; margin-top:10px; margin-left:5px; margin-right:5px; padding-top:20px}
+.list_erreur{border: 3px solid #ec0086}
+.texte_site_admin{color:green; font-weight:bold}
+.titre_admin, .titre_admin_erreur {font-size:18px; color:green; font-weight:bold}
+.titre_admin_erreur{color:#ec0086}
+.text_admin_erreur{color:#ec0086}
+
+.preview_plat_valide{width:100px; height:100px; }
+
+.etape_commercial_admin{display:inline-block; max-width:80% ; border-radius:8px ; background-color:#efefef; font-weight:bold; font-size:20px ; padding:10px; color:#888}
+
+.bloc_image_legende_responsive{display:inline-block; margin:10px; font-size:12px; font-weight:bold;}
+
+/*/////////////////////////// MEDIA QUERY ////////////////////////////////////*/
+@media all and (min-width: 1024px)
+{
+	.puce_menu{padding:5px;}
+	.bouton_fermer{font-size:18px}
+	.input{height:auto}
+}
+@media all and (max-width: 1024px)
+{
+	.puce_menu{padding:12px;}
+	.bouton_fermer{font-size:30px}
+	.input{height:40px}
+}
+@media all and (min-width: 901px)
+{
+	#bloc_info_plat{font-size:12px}
+}
+@media all and (max-width: 901px)
+{
+	#bloc_info_plat{font-size:10px}
+}
+@media all and (max-width: 800px)
+{
+	/* En dessous on enleve le formulaire de recherche et ont le met dans le menu */
+	
+	#texte_partage_button	{display:none}
+	#button_jaime_plat	{display:none}
+	#button_aleatoire	{display:none}
+	#button_cible		{display:none}
+}
+/* Pour tout les m?dias au dessus de 551px (ex: display : none sur le menu_responsive car si on met direct dans le style c'est la proriete du style qui va ?tre prise en compte.. pas le choix donc, ou bien utiliser des selecteurs different pour attribuer dirent style  */
+@media all and (min-width: 924px)
+{
+	/* on enleve le button et menu responsive */
+	header #button_menu_responsive{display:none}
+	#lien_connection{position:absolute ; right:10px; top:0}
+	
+	/* button du quitter du bandeau de réduction qui doit se changer pour apparaitre */
+	.button_refermer_bandeau_promo{right:70px; top:25px}
+}
+@media all and (max-width: 923px)
+{
+	/* On fait apparaitre le button */ 
+	#button_menu_responsive			{display:inline-block ;vertical-align:top;cursor:pointer}
+	#lien_connection			{display:block; position:static; margin:5px 0 5px 0 ; }
+	
+	.bandeau_promo{position:static ; margin:auto; border-radius:10px; transform:rotate(0deg) ; width:290px; margin-bottom:20px}
+}
+@media all and (max-width:810px)
+{
+	#formulaire_recherche_ville	{display:block ; margin:5px 0 5px 0 ; border-bottom:2px solid #ccc ;}
+}
+
+
+@media all and (min-width:610px)
+{
+	.fonctionnalite h2{text-align:left ; }
+	.fonctionnalite .complement_titre_index{margin-top:0}
+	
+	.bloc_contenu_centre{}
+}
+@media all and (max-width:610px)
+{
+	.bloc_button_suivant_processus , .bloc_button_precedent_processus{position:static ; margin-bottom:10px;}
+	#titre_ajout_plat{padding:0}
+	#bloc_ajout_de_plat, #bloc_choix_abonnement, .menu_compte_resto_padding, #bloc_apercu_modif_plat, #bloc_ajout_facade_complementaire, #bloc_ajout_attribus_complementaire {padding:0}
+	.bloc_upload{margin:auto;background:none;position:static ;text-align:center; border:0px ; box-shadow:0px 0px 0px white; z-index:10;}
+	#lien_contact			{display:block; margin:5px 0 5px 0; border-bottom:2px solid #ccc }
+	.fiche_resto{margin-left:0 ; margin-right:0}
+	.fonctionnalite h2{text-align:center ; font-size:22px}
+}
+@media all and (min-width:500px)
+{
+	.bloc_demande_choix{border-radius:10px}
+	
+	.bloc_contenu_centre, .bloc_contenu_centre2{margin: 0 5% 50px 5% ; display:inline-block}
+	#formconnection{width:350px ;}
+}
+@media all and (max-width:500px)
+{
+	.bloc_demande_choix{border-radius:0px}
+	
+	.bloc_contenu_centre, .bloc_contenu_centre2{margin: 0 0 50px 0 ; display:block}
+	#formconnection{width:90% ;}
+}
+@media all and (max-width:480px)
+{
+	#lien_ajout				{display:block; margin:5px 0 5px 0 ; border-bottom:2px solid #ccc ; border-top:2px solid #ccc  }
+	
+	#menu_footer_option{display:none}
+	#button_footer_option{display:inline-block}
+}
+@media all and (max-width:360px)
+{
+	
+	#picto_aleatoire2,#picto_aleatoire	{width:40px}
+	#picto_cible, #picto_en_attente_geo , #picto_cible_hs , #picto_cible2 {width:35px}
+	
+	.picto_partage, .picto_jaime,  .picto_jaime_deja_vote {width:35px}
+}
+@media all and (max-width:300px)
+{
+	#lien_menu_gourmant				{display:block; margin:5px 0 5px 0; border-bottom:2px solid #ccc }
+	
+	#lien_mes_jaimes				{display:block; margin:5px 0 5px 0; border-bottom:2px solid #ccc }
+}
+
+/*///////INDEX /*/
+@media all and (max-height: 700px)
+{
+	.fonctionnalite h2, .fonctionnalite h1 {font-size:20px}
+	.fonctionnalite .complement_titre_index{font-size:16px ; font-weight:bold}
+	.fonctionnalite p {font-size:12px}
+}
+/*////////////////////////FIN MEDIA QUERY /////////////////////////////////*/
+
+/*/////////////////jquery ui//////////////////*/
+
+#ui-id-1
+{
+	z-index:102 ;
+}
+
+.ui-autocomplete {
+max-height: 150px;
+overflow-y: auto;
+/* prevent horizontal scrollbar */
+overflow-x: hidden;
+z-index:202;
+padding-top:10px;
+}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {
+height: 150px;
+}
+
+/*/////jquery ui //////*/
+
+.ui-autocomplete
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: default; 
+}
+.ui-front{z-index:100}
+.ui-menu
+{
+	list-style: none;
+	padding: 2px;
+	margin: 0;
+	display: block;
+	outline: none;
+}
+.ui-widget
+{
+	font-family: Helvetica ,arial, trebuchet, 'Courier New' , sans-serif;
+	font-size: 1.1em;
+}
+.ui-menu-item
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	/* support: IE10, see #8844 */
+}
+.ui-menu-item a
+{
+	text-decoration: none;
+	display: block;
+	padding: 2px .4em;
+	line-height: 1.5;
+	min-height: 0; /* support: IE7 */
+	font-weight: normal;
+}
+.ui-menu-item a:hover
+{
+	background-color:#db320d ;
+	color:white
+}
+.ui-widget-content
+{
+	padding-top:10px;
+	background-color:white;
+	color: #333;
+}
+.ui-corner-all
+{
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+.ui-helper-hidden-accessible
+{
+	display:none
+}
